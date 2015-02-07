@@ -59,7 +59,66 @@
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">Lonely Twitter</h1>
                         <p class="intro-text">A free, XXXXX<br>Created by Eat Pray Code.</p>
-                        <a class="btn btn-default onclick="login" page-scroll">
+                        
+    <script type="text/javascript">
+        function  showtwitts(){
+            var data=JSON.parse('[{"tid": 12345678,"uid": "cici","profile_image_url_https": "https://pbs.twimg.com/profile_images/1387078619/moe_haru.jpg","text": "Made a happy pit stop at @WestTownBakery yesterday! Many thanks to Chicagos"}]');
+       
+        
+            for(i in data){
+
+            var tmpdiv = document.createElement('div');
+            tmpdiv.id=i;
+            tmpdiv.setAttribute("align","left");
+            tmpdiv.setAttribute("height","auto");
+
+            document.getElementById("list").appendChild(tmpdiv);
+
+            var li=document.createElement('li');
+            li.id=data[i].tid;
+            document.getElementById(i).appendChild(li);
+         
+            var tcb = document.createElement('input');
+            tcb.setAttribute("class", "col-md-1");
+            tcb.setAttribute("type", "checkbox");
+
+            document.getElementById(data[i].tid).appendChild(tcb);
+             
+              
+
+            var username= document.createElement('p');
+            username.setAttribute("class", "col-md-2");
+            username.innerHTML=data[i].uid;
+
+            document.getElementById(data[i].tid).appendChild(username);
+
+          
+            var profimg=document.createElement('img');
+            profimg.setAttribute("src", data[i].profile_image_url_https);
+            profimg.setAttribute("class", "col-md-2");
+            profimg.setAttribute("width", "10%");
+            profimg.setAttribute("height", "10%");
+
+            document.getElementById(data[i].tid).appendChild(profimg);
+
+
+
+
+            var twitext=document.createElement('p');
+            twitext.setAttribute("class", "text-left");
+            twitext.setAttribute("class", "col-md-6");
+            twitext.innerHTML=data[i].text;
+
+
+
+            document.getElementById(data[i].tid).appendChild(twitext);
+
+
+         
+        }
+        }
+    </script>
+                        <a class="btn btn-default" onClick="showtwitts()">
                            Login
                         </a>
                         <script type="text/javascript">
@@ -80,14 +139,14 @@
             <div class="col-lg-12">
                 <h2>My friend's Lonely Twitts:</h2>
     
-                    <ul class="list-unstyled">
-                        <div align="left" height: auto;>
+                    <ul id=list class="list-unstyled">
+                     <!--    <div align="left" height: auto;>
                             <li><input type="checkbox" class="col-md-1"/>
                                 <p class="col-md-2">cici_sun</p>
-                                <img src="https://pbs.twimg.com/profile_images/1387078619/moe_haru.jpg" width=10% height=10% class="col-md-2"/> <p class="text-left" class="col-md-6">Made a happy pit stop at @WestTownBakery yesterday! Many thanks to Chicago's @Donu</p>
+                                <img src="https://pbs.twimg.com/profile_images/1387078619/moe_haru.jpg" class="col-md-2"/> <p class="text-left" class="col-md-6">Made a happy pit stop at @WestTownBakery yesterday! Many thanks to Chicago's @Donu</p>
 
                             </li>   
-                        </div>
+                        </div> -->
                     </ul>
 
             </div>
