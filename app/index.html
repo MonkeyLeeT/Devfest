@@ -153,6 +153,77 @@
         </div>
     </section>
 
+    <!-- Send Twitter section-->
+    <section id="send" class="container content-section">
+      <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+          <div class="text-center">
+            <div class="row">
+
+              <div class="col-sm-4 text-center">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="Retweet" value="1" checked> Retweet
+                </label>
+              </div>
+
+              <div class="col-sm-4 text-center">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="Favorite" value="2"> Favorite
+                </label> 
+              </div>
+
+              <div class="col-sm-4 text-center">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="Reply" value="3" onclick="popTextArea(this);"> Reply
+                </label>
+              </div>
+            </div>
+          </div>
+        <br>
+
+
+        <p id="re">This is tweet message~</p>
+
+        <script>
+                
+        function popTextArea(chk) {
+            var t1 = document.getElementById('comment');
+            if(chk.checked){
+                t1.style.display='block';
+            }else{
+                t1.style.display='none';
+            }
+        }
+        </script>
+
+        <div class="form-group">
+          <textarea class="form-control" style="display:none;" rows="5" id="comment">Pre-Defined values!</textarea>
+        </div>
+
+        <button type="button" class="btn btn-primary center-block btn-lg" onclick="myFunction();">SAVE THIS POOR GUY!!!</button>
+
+        <script>
+        function myFunction() {
+
+            var mes=document.getElementById("comment").value;
+            if(document.getElementById("Retweet").checked == true){
+                //ret(tid);
+                window.alert("Retweet Message");
+            }
+            if(document.getElementById("Favorite").checked == true){
+                //fav(tid);
+                window.alert("Favorite Message");
+            }
+            if(document.getElementById("Reply").checked == true){
+                //res(tid, mes);
+                window.alert(mes);
+            }
+        }
+        </script>
+        </div>
+      </div>
+    </section>
+
     <!-- Download Section -->
     <section id="download" class="content-section text-center">
         <div class="download-section">
