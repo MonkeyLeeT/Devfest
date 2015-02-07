@@ -28,6 +28,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+ 
 
 </head>
 
@@ -60,71 +61,65 @@
                         <h1 class="brand-heading">Lonely Twitter</h1>
                         <p class="intro-text">A free, XXXXX<br>Created by Eat Pray Code.</p>
                         
-    <script type="text/javascript">
-        function  showtwitts(){
-            var data=JSON.parse('[{"tid": 12345678,"uid": "cici","profile_image_url_https": "https://pbs.twimg.com/profile_images/1387078619/moe_haru.jpg","text": "Made a happy pit stop at @WestTownBakery yesterday! Many thanks to Chicagos"}]');
-       
-        
-            for(i in data){
+                        <script type="text/javascript">
+                            function  showtwitts(data){
+//                                    var data=JSON.parse('[{"tid": 12345678,"uid": "cici","profile_image_url_https": "https://pbs.twimg.com/profile_images/1387078619/moe_haru.jpg","text": "Made a happy pit stop at @WestTownBakery yesterday! Many thanks to Chicagos"}]');
+                           
+                            
+                                for(i in data){
 
-            var tmpdiv = document.createElement('div');
-            tmpdiv.id=i;
-            tmpdiv.setAttribute("align","left");
-            tmpdiv.setAttribute("height","auto");
+                                    var tmpdiv = document.createElement('div');
+                                    tmpdiv.id=i;
+                                    tmpdiv.setAttribute("align","left");
+                                    tmpdiv.setAttribute("height","auto");
 
-            document.getElementById("list").appendChild(tmpdiv);
+                                    document.getElementById("list").appendChild(tmpdiv);
 
-            var li=document.createElement('li');
-            li.id=data[i].tid;
-            document.getElementById(i).appendChild(li);
-         
-            var tcb = document.createElement('input');
-            tcb.setAttribute("class", "col-md-1");
-            tcb.setAttribute("type", "checkbox");
+                                    var li=document.createElement('li');
+                                    li.id=data[i].tid;
+                                    document.getElementById(i).appendChild(li);
+                                 
+                                    var tcb = document.createElement('input');
+                                    tcb.setAttribute("class", "col-md-1");
+                                    tcb.setAttribute("type", "checkbox");
 
-            document.getElementById(data[i].tid).appendChild(tcb);
-             
-              
+                                    document.getElementById(data[i].tid).appendChild(tcb);
+                                     
+                                      
 
-            var username= document.createElement('p');
-            username.setAttribute("class", "col-md-2");
-            username.innerHTML=data[i].uid;
+                                    var username= document.createElement('p');
+                                    username.setAttribute("class", "col-md-2");
+                                    username.innerHTML=data[i].uid;
 
-            document.getElementById(data[i].tid).appendChild(username);
+                                    document.getElementById(data[i].tid).appendChild(username);
 
-          
-            var profimg=document.createElement('img');
-            profimg.setAttribute("src", data[i].profile_image_url_https);
-            profimg.setAttribute("class", "col-md-2");
-            profimg.setAttribute("width", "10%");
-            profimg.setAttribute("height", "10%");
+                                  
+                                    var profimg=document.createElement('img');
+                                    profimg.setAttribute("src", data[i].profile_image_url_https);
+                                    profimg.setAttribute("class", "col-md-2");
+                                    profimg.setAttribute("width", "10%");
+                                    profimg.setAttribute("height","10%");
 
-            document.getElementById(data[i].tid).appendChild(profimg);
+                                    document.getElementById(data[i].tid).appendChild(profimg);
 
+                                    var twitext=document.createElement('p');
+                                    twitext.setAttribute("class", "text-left");
+                                    twitext.setAttribute("class", "col-md-6");
+                                    twitext.innerHTML=data[i].text;
 
-
-
-            var twitext=document.createElement('p');
-            twitext.setAttribute("class", "text-left");
-            twitext.setAttribute("class", "col-md-6");
-            twitext.innerHTML=data[i].text;
-
-
-
-            document.getElementById(data[i].tid).appendChild(twitext);
-
-
-         
-        }
-        }
-    </script>
-                        <a class="btn btn-default" onClick="showtwitts()">
+                                    document.getElementById(data[i].tid).appendChild(twitext);
+                                }
+                            }
+                        </script>
+                        <a class="btn btn-default" onClick="login()">
                            Login
                         </a>
                         <script type="text/javascript">
+
                             function login(){
                                 twitauth();
-
+                                var twitData=JSON.parse(sessionStorage.myObject);
+                                showtwitts(twitData);
                             }  
                         </script>
                     </div>
@@ -137,23 +132,22 @@
     <section id="about" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-12">
-                <h2>My friend's Lonely Twitts:</h2>
-    
-                    <ul id=list class="list-unstyled">
-                     <!--    <div align="left" height: auto;>
-                            <li><input type="checkbox" class="col-md-1"/>
-                                <p class="col-md-2">cici_sun</p>
-                                <img src="https://pbs.twimg.com/profile_images/1387078619/moe_haru.jpg" class="col-md-2"/> <p class="text-left" class="col-md-6">Made a happy pit stop at @WestTownBakery yesterday! Many thanks to Chicago's @Donu</p>
+                <h2>My friend's Lonely Tweets:</h2>
+                <ul id=list class="list-unstyled">
+                 <!--<div align="left" height: auto;>
+                        <li><input type="checkbox" class="col-md-1"/>
+                            <p class="col-md-2">cici_sun</p>
+                            <img src="https://pbs.twimg.com/profile_images/1387078619/moe_haru.jpg" class="col-md-2"/> <p class="text-left" class="col-md-6">Made a happy pit stop at @WestTownBakery yesterday! Many thanks to Chicago's @Donu</p>
 
-                            </li>   
-                        </div> -->
-                    </ul>
-
+                        </li>   
+                    </div> -->
+                </ul>
             </div>
         </div>
     </section>
 
     <!-- Send Twitter section-->
+
     <section id="send" class="container content-section">
       <div class="row">
         <div class="col-lg-10 col-lg-offset-1">
@@ -184,28 +178,51 @@
 
         <p id="re">This is tweet message~</p>
 
-        <script>
-                
+        <script>                
         function popTextArea(chk) {
-            var t1 = document.getElementById('comment');
+            var t1 = document.getElementById('subject');
+            var t2 = document.getElementById('checklen');
             if(chk.checked){
+                t2.style.display='block';
                 t1.style.display='block';
             }else{
                 t1.style.display='none';
+                t2.style.display='none';
             }
         }
         </script>
 
-        <div class="form-group">
-          <textarea class="form-control" style="display:none;" rows="5" id="comment">Pre-Defined values!</textarea>
+        <script type="text/javascript">     
+          
+        function checkLength(obj)  {         
+            var maxChars = 140;      
+            var curr = maxChars - obj.value.length;    
+            document.getElementById("checklen").innerHTML = curr.toString();               
+        }   
+          
+        </script>
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="form-group">                                
+                    <textarea class="form-control" style="display:none;" rows="3" name="mcpForumPost.postTitle" id="subject" maxLength="140" theme="simple" onkeyup="checkLength(this)"  accessKey="1" tabindex="11"></textarea>  
+                    
+                    <span id="subjectchk">  
+                        <p id="checklen" style="display:none">140</p>   
+                    </span>
+
+                </div> 
+            </div>
         </div>
+ 
+
 
         <button type="button" class="btn btn-primary center-block btn-lg" onclick="myFunction();">SAVE THIS POOR GUY!!!</button>
 
         <script>
         function myFunction() {
 
-            var mes=document.getElementById("comment").value;
+            var mes=document.getElementById("subject").value;
             if(document.getElementById("Retweet").checked == true){
                 //ret(tid);
                 window.alert("Retweet Message");
@@ -229,9 +246,10 @@
         <div class="download-section">
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <h2>Download Grayscale</h2>
-                    <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
-                    <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
+                    <h2>Wohoo~~</h2>
+                    <h2>You have SAVED a LONELY SOUL!</h2>
+                    <br><br><br>
+                    <a href="#about" class="btn btn-warning btn-lg">Keep Sending warm</a>
                 </div>
             </div>
         </div>
