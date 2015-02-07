@@ -132,11 +132,11 @@
         
        
             var tmp=lis.children[i].getElementsByTagName("input")[0];
-            alert(tmp.checked);
+            //alert(tmp.checked);
             if(tmp.checked == true){
                 
                 for(var j in data){
-                    alert("haha")
+                    //alert("haha")
                     if(j==i){var tmpid=data[j].tid;
                             localStorage.setItem("tid", tmpid);
                              var tmptxt=data[j].text;
@@ -280,7 +280,8 @@
 
         <script>
         function myFunction() {
-
+			var tid = localStorage.getItem("tid");
+			console.log(tid);
             var mes=document.getElementById("subject").value;
             if(document.getElementById("Retweet").checked == true){
                 retweet(tid);

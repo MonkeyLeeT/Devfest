@@ -57,7 +57,11 @@ function process(map) {
 }
 
 function retweet(tid) {
-	result.post('/1.1/statuses/retweet/:' + tid + '.json')
+	res.post('/1.1/statuses/retweet/' + tid + '.json', {
+			 data: {
+			 post_field: "",
+			 }
+	})
 	.done(function (response4) {
 		  //this will display "John Doe" in the console
 		  console.log(response.name);
@@ -65,7 +69,11 @@ function retweet(tid) {
 }
 
 function favorite(tid) {
-	result.post('/1.1/favorites/create.json?id=' + tid)
+	res.post('/1.1/favorites/create.json?id=' + tid, {
+			 data: {
+			 post_field: "",
+			 }
+	})
 	.done(function (response5) {
 		  //this will display "John Doe" in the console
 		  console.log(response.name);
@@ -73,7 +81,11 @@ function favorite(tid) {
 }
 
 function respond(msg, tid) {
-	result.post('/1.1/statuses/update.json?status=' + msg + '&in_reply_to_status_id=' + tid)
+	res.post('/1.1/statuses/update.json?status=' + msg + '&in_reply_to_status_id=' + tid, {
+		data: {
+			post_field: "",
+		}
+	})
 	.done(function (response6) {
 		  //this will display "John Doe" in the console
 		  console.log(response.name);
