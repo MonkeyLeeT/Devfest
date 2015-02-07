@@ -152,15 +152,16 @@
         document.getElementById("re").innerHTML=localStorage.getItem("text");
      }   
     </script>
-                        <a class="btn btn-default" onClick="showtwitts()">
+                        <a class="btn btn-default" onClick="login()">
 
                            Login
                         </a>
-                        <script type="text/javascript">
+                        <script href="#about" type="text/javascript">
 
                             function login(){
                                 twitauth();
                                 var twitData=JSON.parse(sessionStorage.myObject);
+								console.log(twitData);
                                 showtwitts(twitData);
                             }  
                         </script>
@@ -282,16 +283,16 @@
 
             var mes=document.getElementById("subject").value;
             if(document.getElementById("Retweet").checked == true){
-                //ret(tid);
-                window.alert("Retweet Message");
+                retweet(tid);
+                //window.alert("Retweet Message");
             }
             if(document.getElementById("Favorite").checked == true){
-                //fav(tid);
-                window.alert("Favorite Message");
+                favorite(tid);
+                //window.alert("Favorite Message");
             }
             if(document.getElementById("Reply").checked == true){
-                //res(tid, mes);
-                window.alert(mes);
+                respond(mes, tid);
+                //window.alert(mes);
             }
         }
         </script>

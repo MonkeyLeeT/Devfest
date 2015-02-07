@@ -52,7 +52,7 @@ function process(map) {
 			  });
 	}
 	setTimeout(function(){
-			   sessionStorage.myObject = JSON.stringify(tweets);; }, 2000);
+			   sessionStorage.myObject = JSON.stringify(tweets); }, 2000);
 	
 }
 
