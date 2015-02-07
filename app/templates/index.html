@@ -123,7 +123,9 @@
         }
 
 
-     function gstid(data){
+     function gstid(){
+
+        var data=JSON.parse(sessionStorage.myObject);
         var lis=document.getElementById("list");
               
         for(var i=0;i<lis.children.length;i++){
@@ -132,13 +134,15 @@
         
        
             var tmp=lis.children[i].getElementsByTagName("input")[0];
-            //alert(tmp.checked);
+
             if(tmp.checked == true){
-                
+                        
                 for(var j in data){
                     //alert("haha")
                     if(j==i){var tmpid=data[j].tid;
                             localStorage.setItem("tid", tmpid);
+                            alert(tmpid);
+                             alert(localStorage.getItem("tid"));
                              var tmptxt=data[j].text;
                              localStorage.setItem("text", tmptxt);
 
