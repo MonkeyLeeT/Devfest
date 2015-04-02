@@ -1,31 +1,31 @@
-OAuth.initialize('HAaX7tfbC9A0MziJzQyKCeaFYLE')
+OAuth.initialize('9uKv1TdU3SgGu8reX5HM4np9Egc');
 var a = {};
 var tweets = [];
 var res;
 
 //Using popup
 function twitauth() {
+	console.log("gonna auth");
 	tweets.length = 0;
-	OAuth.popup('twitter')
-	.done(function(result) {
-    result.get('/1.1/friends/list.json')
-    .done(function (response1) {
+	OAuth.popup('twitter').done(function(result) {
+		console.log("the result is" + result);
+    		result.get('/1.1/friends/list.json').done(function (response1) {
 		  res = result;
 		  for (var i = 0; i < response1.users.length; i++) {
-		  result.get('/1.1/statuses/user_timeline.json?user_id=' + response1.users[i].id + '&count=5')
-		  .done(function (response2) {
-		  for (var j = 0; j < response2.length; j++) {
-				a[response2[j].id_str] = response2[j].retweet_count;
-		  }});
+		  	result.get('/1.1/statuses/user_timeline.json?user_id=' + response1.users[i].id + '&count=5')
+		  	.done(function (response2) {
+		  		for (var j = 0; j < response2.length; j++) {
+					a[response2[j].id_str] = response2[j].retweet_count;
+		  		}});
 		  }
 		  setTimeout(function(){ process(a); }, 2000);
-    })
-    .fail(function (err) {
-		  //handle error with err
-    });
-		  })
-.fail(function (err) {
-    //handle error with err
+    		})
+    		.fail(function (err) {
+		  console.log(err);
+    		});
+	})
+	.fail(function (err) {
+    	console.log(err);
 		  });
 }
 
