@@ -161,13 +161,13 @@
                            Login
                         </a>
                         <script href="#about" type="text/javascript">
-
-                            function login(){
-				twitauth();
-				var twitData = JSON.parse(sessionStorage.myObject);
-				console.log(twitData);
-                                showtwitts(twitData);
-                            }  
+			function login() {
+                        	twitauth(function(){
+					var twitData = JSON.parse(sessionStorage.myObject);
+                                	//console.log(twitData);
+                                	showtwitts(twitData);
+				})
+			}  
                         </script>
                     </div>
                 </div>

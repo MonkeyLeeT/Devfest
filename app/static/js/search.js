@@ -4,11 +4,9 @@ var tweets = [];
 var res;
 
 //Using popup
-function twitauth() {
-	console.log("gonna auth");
+function twitauth(display) {
 	tweets.length = 0;
 	OAuth.popup('twitter').done(function(result) {
-		console.log("the result is" + result);
     		result.get('/1.1/friends/list.json').done(function (response1) {
 		  res = result;
 		  for (var i = 0; i < response1.users.length; i++) {
@@ -18,7 +16,7 @@ function twitauth() {
 					a[response2[j].id_str] = response2[j].retweet_count;
 		  		}});
 		  }
-		  setTimeout(function(){ process(a); }, 2000);
+		  setTimeout(function(){ process(a, display);}, 500);
     		})
     		.fail(function (err) {
 		  console.log(err);
@@ -34,14 +32,14 @@ function randomize(o) {
 	return o;
 }
 
-function process(map) {
+function process(map, display) {
 	var keys = [];
 	for(var key in map)
 		keys.push(key);
 	var sorted = keys.sort(function(a,b){return map[a]-map[b]});
 	var max = Math.min(20, sorted.length);
 	sorted = randomize(sorted).slice(0, max);
-	console.log(sorted);
+	//console.log(sorted);
 	for (var i = 0; i < sorted.length; i++) {
 		res.get('/1.1/statuses/show.json?id=' + sorted[i])
 		.done(function (response3) {
@@ -52,7 +50,7 @@ function process(map) {
 			  });
 	}
 	setTimeout(function(){
-			   sessionStorage.myObject = JSON.stringify(tweets); }, 2000);
+			   sessionStorage.myObject = JSON.stringify(tweets);display()}, 500);
 	
 }
 
